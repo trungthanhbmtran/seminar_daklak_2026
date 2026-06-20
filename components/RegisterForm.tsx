@@ -89,7 +89,7 @@ const AutocompleteInput = ({
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value;
         onChange(val);
-        const filtered = options.filter(opt => 
+        const filtered = options.filter(opt =>
             opt.toLowerCase().includes(val.toLowerCase())
         );
         setFilteredOptions(filtered);
@@ -97,7 +97,7 @@ const AutocompleteInput = ({
     };
 
     const handleFocus = () => {
-        const filtered = options.filter(opt => 
+        const filtered = options.filter(opt =>
             opt.toLowerCase().includes(value.toLowerCase())
         );
         setFilteredOptions(filtered.length > 0 ? filtered : options);
