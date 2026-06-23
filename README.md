@@ -19,11 +19,11 @@ docker compose version
 
 npm run start -- -p 3000
 
-docker pull ghcr.io/trungthanhbmtran/seminar_daklak_2026:latest
+sudo docker pull ghcr.io/trungthanhbmtran/seminar_daklak_2026:latest
 
-docker run -d \
-  -p 3000:3000 \
+sudo docker run -d \
   --name hoithao_app \
+  -p 3000:3000 \
   --restart unless-stopped \
   ghcr.io/trungthanhbmtran/seminar_daklak_2026:latest
 

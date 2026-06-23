@@ -4,10 +4,11 @@ import React from "react";
 import QRCode from "react-qr-code";
 import { CheckCircle2, Download, Home, FileText } from "lucide-react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 export default function DocumentsPage() {
-    // You can replace this with the actual URL of the document or Google Drive link
-    const documentUrl = "https://example.com/documents";
+    const documentUrl = "http://103.159.48.203/FTPsite/TAILIEU_THAMLUAN/";
+    const qrUrl = typeof window !== "undefined" ? `${window.location.origin}/tailieu` : "http://localhost:3000/tailieu";
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50 py-12 px-4 sm:px-6 lg:px-8 font-sans flex items-center justify-center">
@@ -41,9 +42,9 @@ export default function DocumentsPage() {
                             Vui lòng sử dụng ứng dụng camera trên điện thoại hoặc Zalo để quét mã QR bên dưới để tải tài liệu.
                         </p>
 
-                        <div className="bg-white p-6 rounded-2xl shadow-inner border border-gray-100 mb-8">
+                        <div className="bg-white p-6 rounded-2xl shadow-inner border border-gray-100 mb-6">
                             <QRCode
-                                value={documentUrl}
+                                value={qrUrl}
                                 size={200}
                                 level="H"
                                 className="mx-auto"
@@ -51,15 +52,13 @@ export default function DocumentsPage() {
                         </div>
 
                         <div className="w-full space-y-4">
-                            <a
-                                href={documentUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            <Link
+                                href="/tailieu"
                                 className="w-full flex items-center justify-center space-x-2 py-4 px-8 border border-transparent rounded-xl shadow-lg text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 transform hover:-translate-y-1"
                             >
-                                <Download className="w-5 h-5" />
-                                <span>Tải tài liệu trực tiếp</span>
-                            </a>
+                                <FileText className="w-5 h-5" />
+                                <span>Xem danh sách tài liệu</span>
+                            </Link>
 
                             <Link
                                 href="/"

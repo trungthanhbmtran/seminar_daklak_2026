@@ -247,23 +247,23 @@ export default function StatisticsClient({ initialData }: { initialData: Registr
                                         <tr key={item.id} className="hover:bg-indigo-50/30 transition-colors">
                                             <td className="p-4 font-medium text-gray-900">{item.fullName}</td>
                                             <td className="p-4">{item.position}</td>
-                                            <td className="p-4">{item.organization}</td>
+                                            <td className="p-4 min-w-[150px] whitespace-normal break-words">{item.organization}</td>
                                             <td className="p-4">{item.phone}</td>
                                             <td className="p-4">{formatDate(item.arrivalTime)}</td>
                                             <td className="p-4">{formatDate(item.departureTime)}</td>
                                             <td className="p-4">
                                                 {item.transportation ? (
-                                                    <span className="inline-flex items-center px-2 py-1 rounded-md bg-purple-50 text-purple-700 text-xs font-medium whitespace-nowrap">
+                                                    <span className="inline-flex items-center px-2 py-1 rounded-md bg-purple-50 text-purple-700 text-xs font-medium whitespace-normal text-center">
                                                         {item.transportation}
                                                     </span>
                                                 ) : "-"}
                                             </td>
                                             <td className="p-4">
-                                                <span className="inline-flex items-center px-2 py-1 rounded-md bg-blue-50 text-blue-700 text-xs font-medium whitespace-nowrap">
+                                                <span className="inline-flex items-center px-2 py-1 rounded-md bg-blue-50 text-blue-700 text-xs font-medium whitespace-normal text-center">
                                                     {item.hotel || "Không có"}
                                                 </span>
                                             </td>
-                                            <td className="p-4 text-gray-500 max-w-xs truncate" title={item.otherRequests}>{item.otherRequests || "-"}</td>
+                                            <td className="p-4 text-gray-500 min-w-[200px] whitespace-normal break-words">{item.otherRequests || "-"}</td>
                                         </tr>
                                     ))
                                 ) : (
