@@ -29,3 +29,13 @@ sudo docker run -d \
 
 
 docker login ghcr.io -u trungthanhbmtran -p <YOUR_GITHUB_PAT>
+
+# Lệnh cập nhật Image trên VPS (Update Image)
+sudo docker pull ghcr.io/trungthanhbmtran/seminar_daklak_2026:latest
+sudo docker stop hoithao_app
+sudo docker rm hoithao_app
+sudo docker run -d \
+  --name hoithao_app \
+  -p 3000:3000 \
+  --restart unless-stopped \
+  ghcr.io/trungthanhbmtran/seminar_daklak_2026:latest
