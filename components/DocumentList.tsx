@@ -5,7 +5,7 @@ import { FileText, Download, Loader2 } from "lucide-react";
 import { getDocuments } from "../app/actions/getDocuments";
 
 export default function DocumentList() {
-    const [docs, setDocs] = useState<{name: string, url: string}[]>([]);
+    const [docs, setDocs] = useState<{ name: string, url: string }[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -35,10 +35,10 @@ export default function DocumentList() {
     return (
         <div className="space-y-3 max-h-[350px] overflow-y-auto pr-2" style={{ scrollbarWidth: 'thin' }}>
             {docs.map((doc, idx) => (
-                <a 
-                    key={idx} 
-                    href={doc.url} 
-                    target="_blank" 
+                <a
+                    key={idx}
+                    href={doc.url}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-between p-3 bg-gray-50 hover:bg-indigo-50 border border-gray-100 rounded-xl transition-colors group"
                 >
