@@ -17,6 +17,7 @@ import {
     CheckCircle2,
     Plane
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 
 const ORGANIZATIONS = [
@@ -142,7 +143,8 @@ const AutocompleteInput = ({
 };
 
 export default function RegisterForm() {
-    const [isSuccess, setIsSuccess] = useState(false);
+    const router = useRouter();
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({
         organization: "",
         phone: "",
@@ -192,7 +194,7 @@ export default function RegisterForm() {
             });
 
             if (response.ok) {
-                setIsSuccess(true);
+                router.push('/documents');
             } else {
                 alert("Có lỗi xảy ra khi đăng ký. Vui lòng thử lại!");
             }
@@ -202,39 +204,6 @@ export default function RegisterForm() {
         }
     };
 
-    if (isSuccess) {
-        return (
-            <div className="bg-white/80 backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden border border-white p-12 text-center">
-                <div className="flex justify-center mb-6">
-                    <div className="bg-green-100 rounded-full p-4">
-                        <CheckCircle2 className="w-16 h-16 text-green-500" />
-                    </div>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Đăng ký thành công!</h3>
-                <p className="text-gray-600 mb-8">
-                    Cảm ơn bạn đã đăng ký tham dự Hội thảo. Thông tin của đoàn đã được ghi nhận.
-                </p>
-                <button
-                    onClick={() => {
-                        setIsSuccess(false);
-                        setFormData({
-                            organization: "",
-                            phone: "",
-                            arrivalTime: "",
-                            departureTime: "",
-                            transportation: "",
-                            hotel: "",
-                            otherRequests: "",
-                            delegates: [{ fullName: "", position: "" }]
-                        });
-                    }}
-                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-xl shadow-sm text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
-                >
-                    Đăng ký đoàn khác
-                </button>
-            </div>
-        );
-    }
 
     return (
         <div className="font-sans">

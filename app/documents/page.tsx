@@ -1,14 +1,19 @@
 "use client";
 
 import React from "react";
-import QRCode from "react-qr-code";
 import { CheckCircle2, Download, Home, FileText } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
+const QRCode = dynamic(() => import("react-qr-code"), { ssr: false });
+
 export default function DocumentsPage() {
     const documentUrl = "http://103.159.48.203/FTPsite/TAILIEU_THAMLUAN/";
-    const qrUrl = typeof window !== "undefined" ? `${window.location.origin}/tailieu` : "http://localhost:3000/tailieu";
+    const [qrUrl, setQrUrl] = React.useState("http://localhost:3000/tailieu");
+
+    React.useEffect(() => {
+        setQrUrl(`${window.location.origin}/tailieu`);
+    }, []);
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50 py-12 px-4 sm:px-6 lg:px-8 font-sans flex items-center justify-center">

@@ -307,5 +307,60 @@
         "position": ""
       }
     ]
+  },
+  {
+    "id": "1782267623041",
+    "createdAt": "2026-06-24T02:20:23.041Z",
+    "organization": "UBND phường Buôn Ma Thuột",
+    "phone": "0911330003",
+    "arrivalTime": "",
+    "departureTime": "",
+    "transportation": "",
+    "hotel": "",
+    "otherRequests": "",
+    "delegates": [
+      {
+        "fullName": "Trần Phú Hùng",
+        "position": "UVBTV Tỉnh uỷ-Bí thư Đảng ủy -CT.HĐND phường"
+      },
+      {
+        "fullName": "Nguyễn Thanh Vũ",
+        "position": "Chủ tịch UBND phường"
+      }
+    ]
+  },
+  {
+    "id": "1782268639776",
+    "createdAt": "2026-06-24T02:37:19.776Z",
+    "organization": "Ủy ban MTTQ Việt Nam tỉnh Đắk Lắk",
+    "phone": "0545484",
+    "arrivalTime": "2026-06-26",
+    "departureTime": "2026-06-20",
+    "transportation": "Ô tô",
+    "hotel": "Sala",
+    "otherRequests": "",
+    "delegates": [
+      {
+        "fullName": "Hhfhf",
+        "position": "Ff"
+      }
+    ]
+  },
+  {
+    "id": "1782268817628",
+    "createdAt": "2026-06-24T02:40:17.628Z",
+    "organization": "Tỉnh ủy Đắk Lắk",
+    "phone": "8888",
+    "arrivalTime": "2026-06-18",
+    "departureTime": "2026-06-28",
+    "transportation": "Máy bay",
+    "hotel": "Sala",
+    "otherRequests": "",
+    "delegates": [
+      {
+        "fullName": "Hhh",
+        "position": "Ghh"
+      }
+    ]
   }
 ]
