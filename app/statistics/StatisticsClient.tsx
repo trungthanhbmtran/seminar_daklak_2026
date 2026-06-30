@@ -1,106 +1,71 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { Users, Building2, CalendarDays, Hotel, Search, Plane } from "lucide-react";
+import { Users, Search, Download } from "lucide-react";
 
-type Delegate = {
-    fullName: string;
-    position: string;
+type FieldConfig = {
+    id: string;
+    label: string;
+    type: string;
+    required: boolean;
 };
 
 type RegistrationData = {
     id: string;
     createdAt: string;
-    organization: string;
-    phone: string;
-    arrivalTime: string;
-    departureTime: string;
-    transportation?: string;
-    hotel: string;
-    otherRequests: string;
-    // Old schema
-    fullName?: string;
-    position?: string;
-    // New schema
-    delegates?: Delegate[];
+    [key: string]: string;
 };
 
-export default function StatisticsClient({ initialData }: { initialData: RegistrationData[] }) {
-    const [filterOrg, setFilterOrg] = useState("");
-    const [filterTime, setFilterTime] = useState("");
-    const [filterHotel, setFilterHotel] = useState("");
-    const [filterTrans, setFilterTrans] = useState("");
-    const [searchName, setSearchName] = useState("");
+export default function StatisticsClient({ initialData, fields }: { initialData: RegistrationData[], fields: FieldConfig[] }) {
+    const [searchTerm, setSearchTerm] = useState("");
     
     // Phân trang
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(5);
 
-    const formatDate = (dateStr?: string) => {
-        if (!dateStr) return "-";
-        const parts = dateStr.split('-');
-        if (parts.length === 3) return `${parts[2]}/${parts[1]}/${parts[0]}`;
-        return dateStr;
-    };
-
-    const flattenedData = useMemo(() => {
-        const flat: any[] = [];
-        initialData.forEach((item) => {
-            if (item.delegates && item.delegates.length > 0) {
-                item.delegates.forEach((del, idx) => {
-                    flat.push({
-                        ...item,
-                        id: `${item.id}-${idx}`,
-                        fullName: del.fullName,
-                        position: del.position
-                    });
-                });
-            } else {
-                // Fallback for old records
-                flat.push({
-                    ...item,
-                    fullName: item.fullName || "Không rõ",
-                    position: item.position || ""
-                });
-            }
-        });
-        return flat;
-    }, [initialData]);
-
     const filteredData = useMemo(() => {
-        return flattenedData.filter((item) => {
-            const matchOrg = filterOrg ? (item.organization?.toLowerCase().includes(filterOrg.toLowerCase()) ?? false) : true;
-            const matchHotel = filterHotel ? (item.hotel?.toLowerCase().includes(filterHotel.toLowerCase()) ?? false) : true;
-            const matchName = searchName ? (item.fullName?.toLowerCase().includes(searchName.toLowerCase()) ?? false) : true;
-            const matchTrans = filterTrans ? (item.transportation?.toLowerCase().includes(filterTrans.toLowerCase()) ?? false) : true;
-
-            // For time, if filter is selected, check if it matches arrival or departure
-            let matchTime = true;
-            if (filterTime) {
-                matchTime = item.arrivalTime === filterTime || item.departureTime === filterTime;
-            }
-
-            return matchOrg && matchHotel && matchName && matchTime && matchTrans;
+        return initialData.filter((item) => {
+            if (!searchTerm) return true;
+            const term = searchTerm.toLowerCase();
+            // Search across all dynamic fields
+            return fields.some(field => {
+                const val = item[field.id];
+                return val && val.toLowerCase().includes(term);
+            });
         });
-    }, [flattenedData, filterOrg, filterTime, filterHotel, filterTrans, searchName]);
+    }, [initialData, searchTerm, fields]);
 
     // Reset trang khi đổi bộ lọc
     React.useEffect(() => {
         setCurrentPage(1);
-    }, [filterOrg, filterTime, filterHotel, filterTrans, searchName, pageSize]);
+    }, [searchTerm, pageSize]);
 
     // Dữ liệu phân trang
     const totalPages = Math.ceil(filteredData.length / pageSize) || 1;
     const paginatedData = filteredData.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
-    // Get unique values for dropdowns
-    const uniqueOrgs = Array.from(new Set(flattenedData.map(d => d.organization).filter(Boolean)));
-    const uniqueHotels = Array.from(new Set(flattenedData.map(d => d.hotel).filter(Boolean)));
-    const uniqueTrans = Array.from(new Set(flattenedData.map(d => d.transportation).filter(Boolean)));
-    const uniqueTimes = Array.from(new Set([
-        ...flattenedData.map(d => d.arrivalTime),
-        ...flattenedData.map(d => d.departureTime)
-    ].filter(Boolean)));
+    const exportToCsv = () => {
+        const headers = ["STT", ...fields.map(f => f.label)];
+        const rows = filteredData.map((item, idx) => [
+            idx + 1,
+            ...fields.map(f => `"${(item[f.id] || "").replace(/"/g, '""')}"`)
+        ]);
+        
+        const csvContent = [
+            headers.map(h => `"${h}"`).join(","),
+            ...rows.map(r => r.join(","))
+        ].join("\n");
+        
+        // Use BOM to fix Vietnamese display in Excel
+        const blob = new Blob(["\uFEFF" + csvContent], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", `Danh_sach_dai_bieu_${new Date().toISOString().slice(0, 10)}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-blue-50 py-12 px-4 sm:px-6 lg:px-8 font-sans">
@@ -111,107 +76,27 @@ export default function StatisticsClient({ initialData }: { initialData: Registr
                         Thống Kê Danh Sách Đại Biểu
                     </h1>
                     <p className="text-lg text-gray-600">
-                        Quản lý và tra cứu thông tin đại biểu tham dự hội thảo
+                        Quản lý và tra cứu thông tin đại biểu tham dự tập huấn
                     </p>
                 </div>
 
                 {/* Filters Card */}
                 <div className="bg-white/80 backdrop-blur-xl shadow-lg rounded-2xl p-6 border border-white">
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                        {/* Search by Name */}
+                    <div className="grid grid-cols-1 gap-4 max-w-2xl mx-auto">
+                        {/* Global Search */}
                         <div className="space-y-1">
-                            <label className="text-xs font-medium text-gray-500 uppercase">Tìm theo tên</label>
+                            <label className="text-xs font-medium text-gray-500 uppercase">Tìm kiếm toàn cục</label>
                             <div className="relative">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <Search className="h-4 w-4 text-gray-400" />
                                 </div>
                                 <input
                                     type="text"
-                                    value={searchName}
-                                    onChange={(e) => setSearchName(e.target.value)}
-                                    placeholder="Nhập tên đại biểu..."
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    placeholder="Nhập tên, số điện thoại, đơn vị... để tìm kiếm"
                                     className="block w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-gray-50/50 text-sm"
                                 />
-                            </div>
-                        </div>
-
-                        {/* Filter by Org */}
-                        <div className="space-y-1">
-                            <label className="text-xs font-medium text-gray-500 uppercase">Đơn vị</label>
-                            <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <Building2 className="h-4 w-4 text-gray-400" />
-                                </div>
-                                <select
-                                    value={filterOrg}
-                                    onChange={(e) => setFilterOrg(e.target.value)}
-                                    className="block w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-gray-50/50 text-sm appearance-none"
-                                >
-                                    <option value="">Tất cả đơn vị</option>
-                                    {uniqueOrgs.map((org, idx) => (
-                                        <option key={idx} value={org}>{org}</option>
-                                    ))}
-                                </select>
-                            </div>
-                        </div>
-
-                        {/* Filter by Time */}
-                        <div className="space-y-1">
-                            <label className="text-xs font-medium text-gray-500 uppercase">Thời gian (Đến/Đi)</label>
-                            <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <CalendarDays className="h-4 w-4 text-gray-400" />
-                                </div>
-                                <select
-                                    value={filterTime}
-                                    onChange={(e) => setFilterTime(e.target.value)}
-                                    className="block w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-gray-50/50 text-sm appearance-none"
-                                >
-                                    <option value="">Tất cả thời gian</option>
-                                    {uniqueTimes.sort().map((time, idx) => (
-                                        <option key={idx} value={String(time)}>{formatDate(String(time))}</option>
-                                    ))}
-                                </select>
-                            </div>
-                        </div>
-
-                        {/* Filter by Hotel */}
-                        <div className="space-y-1">
-                            <label className="text-xs font-medium text-gray-500 uppercase">Nơi ở</label>
-                            <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <Hotel className="h-4 w-4 text-gray-400" />
-                                </div>
-                                <select
-                                    value={filterHotel}
-                                    onChange={(e) => setFilterHotel(e.target.value)}
-                                    className="block w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-gray-50/50 text-sm appearance-none"
-                                >
-                                    <option value="">Tất cả nơi ở</option>
-                                    {uniqueHotels.map((hotel, idx) => (
-                                        <option key={idx} value={hotel}>{hotel}</option>
-                                    ))}
-                                </select>
-                            </div>
-                        </div>
-
-                        {/* Filter by Transportation */}
-                        <div className="space-y-1">
-                            <label className="text-xs font-medium text-gray-500 uppercase">Phương tiện</label>
-                            <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <Plane className="h-4 w-4 text-gray-400" />
-                                </div>
-                                <select
-                                    value={filterTrans}
-                                    onChange={(e) => setFilterTrans(e.target.value)}
-                                    className="block w-full pl-9 pr-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-gray-50/50 text-sm appearance-none"
-                                >
-                                    <option value="">Tất cả phương tiện</option>
-                                    {uniqueTrans.map((trans, idx) => (
-                                        <option key={idx} value={String(trans)}>{String(trans)}</option>
-                                    ))}
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -224,51 +109,42 @@ export default function StatisticsClient({ initialData }: { initialData: Registr
                             <Users className="w-5 h-5" />
                             <h2 className="font-semibold">Danh sách kết quả ({filteredData.length})</h2>
                         </div>
+                        <button
+                            onClick={exportToCsv}
+                            className="flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium shadow-sm"
+                        >
+                            <Download className="w-4 h-4" />
+                            <span>Xuất Excel/CSV</span>
+                        </button>
                     </div>
 
                     <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse">
                             <thead>
                                 <tr className="bg-gray-50/80 text-gray-500 text-xs uppercase tracking-wider border-b border-gray-100">
-                                    <th className="p-4 font-medium whitespace-nowrap">Họ và tên</th>
-                                    <th className="p-4 font-medium whitespace-nowrap">Chức vụ</th>
-                                    <th className="p-4 font-medium whitespace-nowrap">Đơn vị</th>
-                                    <th className="p-4 font-medium whitespace-nowrap">Điện thoại</th>
-                                    <th className="p-4 font-medium whitespace-nowrap">Ngày đến</th>
-                                    <th className="p-4 font-medium whitespace-nowrap">Ngày đi</th>
-                                    <th className="p-4 font-medium whitespace-nowrap">Phương tiện</th>
-                                    <th className="p-4 font-medium whitespace-nowrap">Nơi ở</th>
-                                    <th className="p-4 font-medium whitespace-nowrap">Yêu cầu khác</th>
+                                    <th className="p-4 font-medium whitespace-nowrap w-16 text-center">STT</th>
+                                    {fields.map(field => (
+                                        <th key={field.id} className="p-4 font-medium whitespace-nowrap">
+                                            {field.label}
+                                        </th>
+                                    ))}
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-50 text-sm text-gray-700">
                                 {paginatedData.length > 0 ? (
-                                    paginatedData.map((item) => (
+                                    paginatedData.map((item, idx) => (
                                         <tr key={item.id} className="hover:bg-indigo-50/30 transition-colors">
-                                            <td className="p-4 font-medium text-gray-900">{item.fullName}</td>
-                                            <td className="p-4">{item.position}</td>
-                                            <td className="p-4 min-w-[150px] whitespace-normal break-words">{item.organization}</td>
-                                            <td className="p-4">{item.phone}</td>
-                                            <td className="p-4">{formatDate(item.arrivalTime)}</td>
-                                            <td className="p-4">{formatDate(item.departureTime)}</td>
-                                            <td className="p-4">
-                                                {item.transportation ? (
-                                                    <span className="inline-flex items-center px-2 py-1 rounded-md bg-purple-50 text-purple-700 text-xs font-medium whitespace-normal text-center">
-                                                        {item.transportation}
-                                                    </span>
-                                                ) : "-"}
-                                            </td>
-                                            <td className="p-4">
-                                                <span className="inline-flex items-center px-2 py-1 rounded-md bg-blue-50 text-blue-700 text-xs font-medium whitespace-normal text-center">
-                                                    {item.hotel || "Không có"}
-                                                </span>
-                                            </td>
-                                            <td className="p-4 text-gray-500 min-w-[200px] whitespace-normal break-words">{item.otherRequests || "-"}</td>
+                                            <td className="p-4 text-center text-gray-500">{(currentPage - 1) * pageSize + idx + 1}</td>
+                                            {fields.map(field => (
+                                                <td key={field.id} className="p-4 whitespace-nowrap max-w-[200px] truncate" title={item[field.id] || ""}>
+                                                    {item[field.id] || "-"}
+                                                </td>
+                                            ))}
                                         </tr>
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan={9} className="p-8 text-center text-gray-500">
+                                        <td colSpan={fields.length + 1} className="p-8 text-center text-gray-500">
                                             Không tìm thấy dữ liệu phù hợp với bộ lọc hiện tại.
                                         </td>
                                     </tr>
@@ -287,7 +163,6 @@ export default function StatisticsClient({ initialData }: { initialData: Registr
                                     onChange={(e) => setPageSize(Number(e.target.value))}
                                     className="mx-2 border-gray-200 rounded-md text-sm focus:ring-indigo-500 focus:border-indigo-500 py-1"
                                 >
-                                    <option value={2}>2</option>
                                     <option value={5}>5</option>
                                     <option value={10}>10</option>
                                     <option value={20}>20</option>

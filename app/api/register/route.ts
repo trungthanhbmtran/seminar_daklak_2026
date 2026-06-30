@@ -5,6 +5,7 @@ import path from 'path';
 export async function POST(request: Request) {
     try {
         const body = await request.json();
+        console.log("RECEIVED REGISTRATION:", body);
         
         const dataDir = path.join(process.cwd(), 'data');
         const filePath = path.join(dataDir, 'result.json');

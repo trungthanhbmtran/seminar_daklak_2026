@@ -8,11 +8,19 @@ import dynamic from "next/dynamic";
 const QRCode = dynamic(() => import("react-qr-code"), { ssr: false });
 
 export default function DocumentsPage() {
-    const documentUrl = "http://103.159.48.203/FTPsite/TAILIEU_THAMLUAN/";
-    const [qrUrl, setQrUrl] = React.useState("http://localhost:3000/tailieu");
+    const [qrUrl, setQrUrl] = React.useState("");
+    const [showDocs, setShowDocs] = React.useState(false);
 
     React.useEffect(() => {
-        setQrUrl(`${window.location.origin}/tailieu`);
+        fetch('/api/config')
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.data.documents) {
+                    setShowDocs(data.data.documents.show);
+                    setQrUrl(data.data.documents.url);
+                }
+            })
+            .catch(err => console.error("Error loading config", err));
     }, []);
 
     return (
@@ -34,47 +42,65 @@ export default function DocumentsPage() {
                 </div>
 
                 {/* QR Code Card */}
-                <div className="bg-white/80 backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden border border-white">
-                    <div className="p-8 sm:p-12 flex flex-col items-center">
-                        <div className="flex items-center space-x-2 text-indigo-600 mb-6">
-                            <FileText className="w-6 h-6" />
-                            <h2 className="text-xl font-bold uppercase tracking-wider">
-                                Tài liệu Hội thảo
-                            </h2>
-                        </div>
+                {showDocs ? (
+                    <div className="bg-white/80 backdrop-blur-xl shadow-2xl rounded-3xl overflow-hidden border border-white">
+                        <div className="p-8 sm:p-12 flex flex-col items-center">
+                            <div className="flex items-center space-x-2 text-indigo-600 mb-6">
+                                <FileText className="w-6 h-6" />
+                                <h2 className="text-xl font-bold uppercase tracking-wider">
+                                    Tài liệu Hội thảo
+                                </h2>
+                            </div>
 
-                        <p className="text-center text-gray-500 mb-8 max-w-sm">
-                            Vui lòng sử dụng ứng dụng camera trên điện thoại hoặc Zalo để quét mã QR bên dưới để tải tài liệu.
-                        </p>
+                            <p className="text-center text-gray-500 mb-8 max-w-sm">
+                                Vui lòng sử dụng ứng dụng camera trên điện thoại hoặc Zalo để quét mã QR bên dưới để xem/tải tài liệu.
+                            </p>
 
-                        <div className="bg-white p-6 rounded-2xl shadow-inner border border-gray-100 mb-6">
-                            <QRCode
-                                value={qrUrl}
-                                size={200}
-                                level="H"
-                                className="mx-auto"
-                            />
-                        </div>
+                            {qrUrl && (
+                                <div className="bg-white p-6 rounded-2xl shadow-inner border border-gray-100 mb-6">
+                                    <QRCode
+                                        value={qrUrl}
+                                        size={200}
+                                        level="H"
+                                        className="mx-auto"
+                                    />
+                                </div>
+                            )}
 
-                        <div className="w-full space-y-4">
-                            <Link
-                                href="/tailieu"
-                                className="w-full flex items-center justify-center space-x-2 py-4 px-8 border border-transparent rounded-xl shadow-lg text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 transform hover:-translate-y-1"
-                            >
-                                <FileText className="w-5 h-5" />
-                                <span>Xem danh sách tài liệu</span>
-                            </Link>
+                            <div className="w-full space-y-4">
+                                {qrUrl && (
+                                    <a
+                                        href={qrUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full flex items-center justify-center space-x-2 py-4 px-8 border border-transparent rounded-xl shadow-lg text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 transform hover:-translate-y-1"
+                                    >
+                                        <FileText className="w-5 h-5" />
+                                        <span>Xem danh sách tài liệu</span>
+                                    </a>
+                                )}
 
-                            <Link
-                                href="/"
-                                className="w-full flex items-center justify-center space-x-2 py-4 px-8 border border-gray-200 rounded-xl shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300"
-                            >
-                                <Home className="w-5 h-5" />
-                                <span>Về trang chủ</span>
-                            </Link>
+                                <Link
+                                    href="/"
+                                    className="w-full flex items-center justify-center space-x-2 py-4 px-8 border border-gray-200 rounded-xl shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300"
+                                >
+                                    <Home className="w-5 h-5" />
+                                    <span>Về trang chủ</span>
+                                </Link>
+                            </div>
                         </div>
                     </div>
-                </div>
+                ) : (
+                    <div className="flex justify-center mt-12">
+                        <Link
+                            href="/"
+                            className="flex items-center justify-center space-x-2 py-4 px-8 border border-transparent rounded-xl shadow-lg text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300 transform hover:-translate-y-1"
+                        >
+                            <Home className="w-5 h-5" />
+                            <span>Quay về trang chủ</span>
+                        </Link>
+                    </div>
+                )}
             </div>
         </div>
     );

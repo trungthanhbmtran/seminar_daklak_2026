@@ -1,0 +1,45 @@
+{
+  "title": "ĐĂNG KÝ THAM GIA TẬP HUẤN NÂNG CAO NĂNG LỰC SỐ VÀ ỨNG DỤNG AI",
+  "date": "Ngày 03/7/2026",
+  "location": "Hội trường Văn phòng UBND tỉnh",
+  "organizations": [
+    "Tỉnh ủy Đắk Lắk",
+    "HĐND tỉnh Đắk Lắk",
+    "UBND tỉnh Đắk Lắk",
+    "Ủy ban MTTQ Việt Nam tỉnh Đắk Lắk",
+    "Sở Khoa học và Công nghệ tỉnh Đắk Lắk",
+    "Sở Công Thương tỉnh Đắk Lắk",
+    "Sở Tài chính tỉnh Đắk Lắk",
+    "Sở Nông nghiệp và Môi trường tỉnh Đắk Lắk",
+    "Sở Giáo dục và Đào tạo tỉnh Đắk Lắk",
+    "Sở Y tế tỉnh Đắk Lắk",
+    "Sở Xây dựng tỉnh Đắk Lắk",
+    "Sở Nội vụ tỉnh Đắk Lắk",
+    "Sở Tư pháp tỉnh Đắk Lắk",
+    "Sở Văn hóa, Thể thao và Du lịch tỉnh Đắk Lắk",
+    "Thanh tra tỉnh Đắk Lắk",
+    "Sở Dân tộc tỉnh Đắk Lắk",
+    "UBND Phường Buôn Ma Thuột",
+    "UBND Phường Buôn Hồ",
+    "UBND Phường Tuy Hoà",
+    "UBND xã Ea Drông",
+    "UBND xã Hòa Phú",
+    "Đại học Tây Nguyên",
+    "Hiệp hội Doanh nghiệp tỉnh Đắk Lắk",
+    "Liên minh Hợp tác xã tỉnh Đắk Lắk",
+    "Liên hiệp các Hội KH&KT tỉnh Đắk Lắk",
+    "Bộ Khoa học và Công nghệ",
+    "Vui lòng nhập tên đơn vị nếu không có"
+  ],
+  "fields": [
+    { "id": "fullName", "label": "Họ và tên", "type": "text", "required": true },
+    { "id": "organization", "label": "Đơn vị công tác", "type": "autocomplete", "required": true },
+    { "id": "position", "label": "Chức vụ", "type": "text", "required": true },
+    { "id": "phone", "label": "Số điện thoại", "type": "tel", "required": true },
+    { "id": "email", "label": "Email", "type": "email", "required": false }
+  ],
+  "documents": {
+    "show": false,
+    "url": "http://localhost:3000/tailieu"
+  }
+}

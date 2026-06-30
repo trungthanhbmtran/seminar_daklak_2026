@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // reactCompiler: true,
   output: 'standalone',
-  // allowedDevOrigins: ['14.174.183.97'],
+  // allowedDevOrigins: ['113.176.130.161'],
   experimental: {
     serverActions: {
       bodySizeLimit: '500mb',
