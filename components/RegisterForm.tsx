@@ -129,6 +129,15 @@ export default function RegisterForm({
         e.preventDefault();
         setIsSubmitting(true);
 
+        // Validate phone number if it exists in formData
+        const phoneRegex = /^(0|\+84)(3[2-9]|5[2689]|7[06-9]|8[1-9]|9[0-9])[0-9]{7}$/;
+        const phoneField = fields.find(f => f.type === 'tel' || f.id === 'phone');
+        if (phoneField && formData[phoneField.id] && !phoneRegex.test(formData[phoneField.id])) {
+            alert(`Trường "${phoneField.label}" không hợp lệ. Vui lòng nhập đúng định dạng số điện thoại Việt Nam!`);
+            setIsSubmitting(false);
+            return;
+        }
+
         try {
             const response = await fetch('/api/register', {
                 method: 'POST',

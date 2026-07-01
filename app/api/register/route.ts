@@ -6,6 +6,14 @@ export async function POST(request: Request) {
     try {
         const body = await request.json();
         console.log("RECEIVED REGISTRATION:", body);
+
+        // Validate phone if provided
+        const phoneRegex = /^(0|\+84)(3[2-9]|5[2689]|7[06-9]|8[1-9]|9[0-9])[0-9]{7}$/;
+        // Check for common phone field names
+        const phone = body.phone || body.phoneNumber || body.sdt;
+        if (phone && !phoneRegex.test(phone)) {
+            return NextResponse.json({ error: 'Số điện thoại không hợp lệ' }, { status: 400 });
+        }
         
         const dataDir = path.join(process.cwd(), 'data');
         const filePath = path.join(dataDir, 'result.json');
