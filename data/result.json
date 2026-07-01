@@ -1,519 +1,137 @@
 [
   {
-    "id": "1781772360168",
-    "createdAt": "2026-06-18T08:46:00.168Z",
-    "organization": "Trung tâm IOC",
-    "phone": "0972273689",
-    "arrivalTime": "2026-06-26",
-    "departureTime": "2026-06-26",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Lẻ Anh Tuấn",
-        "position": "Viên chức"
-      }
-    ]
-  },
-  {
-    "id": "1781846143084",
-    "createdAt": "2026-06-19T05:15:43.085Z",
-    "organization": "Sở Công Thương tỉnh Đắk Lắk",
-    "phone": "0915268814",
-    "arrivalTime": "2026-06-26",
-    "departureTime": "2026-06-26",
-    "transportation": "",
-    "hotel": "Không đặt ks",
-    "otherRequests": "Tự đi chuyển",
-    "delegates": [
-      {
-        "fullName": "Huỳnh Huy Cận",
-        "position": "Chuyên viên"
-      }
-    ]
-  },
-  {
-    "id": "1781961772026",
-    "createdAt": "2026-06-20T13:22:52.026Z",
-    "organization": "Công ty tư vấn đầu tư Phú Yên",
-    "phone": "0918160786",
-    "arrivalTime": "",
-    "departureTime": "",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Ngô Minh Tuấn",
-        "position": "Giám đốc"
-      }
-    ]
-  },
-  {
-    "id": "1782034952934",
-    "createdAt": "2026-06-21T09:42:32.934Z",
-    "organization": "Hội nữ doanh nhân Tỉnh Daklak",
-    "phone": "097 1712712",
-    "arrivalTime": "2026-06-25",
-    "departureTime": "2026-06-26",
-    "transportation": "Ô tô",
-    "hotel": "Rosa ",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Nguyễn thị Phúc Minh ",
-        "position": "Phó chủ Tịch "
-      }
-    ]
-  },
-  {
-    "id": "1782035178423",
-    "createdAt": "2026-06-21T09:46:18.423Z",
-    "organization": "Hội nữ Doanh nhân Tỉnh Daklak",
-    "phone": "091 3436131",
-    "arrivalTime": "2026-06-26",
-    "departureTime": "",
-    "transportation": "Ô tô",
-    "hotel": "Rosa",
-    "otherRequests": "Hội nữ doanh nhân Tỉnh Daklak đăng ký 2 người ",
-    "delegates": [
-      {
-        "fullName": "Nguyễn thị Phúc Minh ",
-        "position": "Phó chủ tịch"
-      },
-      {
-        "fullName": "Nguyễn thị Phượng ",
-        "position": "UV BAN thường vụ "
-      }
-    ]
-  },
-  {
-    "id": "1782088779960",
-    "createdAt": "2026-06-22T00:39:39.960Z",
-    "organization": "Hội nữ doanh nhân tỉnh Đăk Lăk",
-    "phone": "0913436416",
-    "arrivalTime": "2026-06-26",
-    "departureTime": "2026-06-26",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "Không đăng ký ở, không đăng ký phương tiện di chuyển",
-    "delegates": [
-      {
-        "fullName": "Nguyễn Thị Phúc Minh",
-        "position": "Phó chủ tịch thường trực"
-      },
-      {
-        "fullName": "Phan Thị Lan",
-        "position": "Phó chủ tịch"
-      },
-      {
-        "fullName": "Bùi Thị Tuyết Mai",
-        "position": "Phó chủ tịch"
-      }
-    ]
-  },
-  {
-    "id": "1782089432679",
-    "createdAt": "2026-06-22T00:50:32.679Z",
-    "organization": "Đại học Đông Á",
-    "phone": "0913435100",
-    "arrivalTime": "2026-06-25",
-    "departureTime": "2026-06-28",
-    "transportation": "Ô tô",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Trần Ngọc Thanh",
-        "position": "Viện trưởng Viện Nông nghiệp"
-      }
-    ]
-  },
-  {
-    "id": "1782094696329",
-    "createdAt": "2026-06-22T02:18:16.329Z",
-    "organization": "Khác",
-    "phone": "0868689789",
-    "arrivalTime": "2026-06-26",
-    "departureTime": "2026-06-27",
-    "transportation": "Ô tô",
-    "hotel": "Công đoàn",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Phạm Khắc Dũng ",
-        "position": "Chủ tịch "
-      }
-    ]
-  },
-  {
-    "id": "1782111466419",
-    "createdAt": "2026-06-22T06:57:46.419Z",
-    "organization": "Trường Đại học Phú Yên",
-    "phone": "0935231183",
-    "arrivalTime": "",
-    "departureTime": "",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "Đăng ký tham dự Hội thảo",
-    "delegates": [
-      {
-        "fullName": "Nguyễn Minh Cường",
-        "position": "Phó Hiệu trưởng"
-      }
-    ]
-  },
-  {
-    "id": "1782111855818",
-    "createdAt": "2026-06-22T07:04:15.818Z",
-    "organization": "UBND xã Ea Knốp",
-    "phone": "0982665567",
-    "arrivalTime": "2026-06-26",
-    "departureTime": "2026-06-26",
-    "transportation": "Ô tô",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Lê Anh Vũ (0905176736)",
-        "position": "Chủ tịch UBND xã Ea Knốp"
-      }
-    ]
-  },
-  {
-    "id": "1782173159435",
-    "createdAt": "2026-06-23T00:05:59.435Z",
-    "organization": "UBND xã Xuân Thọ ",
-    "phone": "0919646419",
-    "arrivalTime": "2026-06-26",
-    "departureTime": "2026-06-26",
-    "transportation": "Ô tô",
-    "hotel": "Pytopia",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Nguyễn Văn Thể ",
-        "position": "PCT UBND xã Xuân Thọ "
-      }
-    ]
-  },
-  {
-    "id": "1782178337128",
-    "createdAt": "2026-06-23T01:32:17.128Z",
-    "organization": "UBND phường Bình Kiến",
-    "phone": "02573906768",
-    "arrivalTime": "",
-    "departureTime": "",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Lương Thảo Nguyên",
-        "position": "Phó Chủ tịch UBND phường"
-      }
-    ]
-  },
-  {
-    "id": "1782186195016",
-    "createdAt": "2026-06-23T03:43:15.016Z",
-    "organization": "UBND xã Tây Sơn",
-    "phone": "0978399354",
-    "arrivalTime": "",
-    "departureTime": "",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Nguyễn Mạnh Sơn",
-        "position": "Phó chủ tịch"
-      }
-    ]
-  },
-  {
-    "id": "1782189100562",
-    "createdAt": "2026-06-23T04:31:40.562Z",
-    "organization": "Khác",
-    "phone": "0917810850",
-    "arrivalTime": "",
-    "departureTime": "",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Lê Duy Toàn",
-        "position": "Phó chủ tịch UBND phường Cư Bao"
-      }
-    ]
-  },
-  {
-    "id": "1782199617336",
-    "createdAt": "2026-06-23T07:26:57.336Z",
-    "organization": "UBND xã Dliê Ya",
-    "phone": "0922317979",
-    "arrivalTime": "2026-06-25",
-    "departureTime": "2026-06-26",
-    "transportation": "Ô tô",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Phạm Ngọc Thăng Xuân",
-        "position": "Phó Chủ tịch UBND xã"
-      },
-      {
-        "fullName": "Nguyễn Hà Ngọc Dũng",
-        "position": "Văn phòng HĐND-UBND xã"
-      },
-      {
-        "fullName": "Lê Nguyễn Đức Trung",
-        "position": "Phòng Văn hoá - Xã hội"
-      }
-    ]
-  },
-  {
-    "id": "1782201717098",
-    "createdAt": "2026-06-23T08:01:57.098Z",
-    "organization": "Xã Krông Buk ",
-    "phone": "0905348388",
-    "arrivalTime": "",
-    "departureTime": "",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Bùi Đình Hiếu ",
-        "position": "Phó chủ tịch "
-      }
-    ]
-  },
-  {
-    "id": "1782208198932",
-    "createdAt": "2026-06-23T09:49:58.932Z",
-    "organization": "Khác",
-    "phone": "0982133377",
-    "arrivalTime": "",
-    "departureTime": "",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Lê Minh Hoàng ",
-        "position": ""
-      }
-    ]
-  },
-  {
-    "id": "1782267623041",
-    "createdAt": "2026-06-24T02:20:23.041Z",
-    "organization": "UBND phường Buôn Ma Thuột",
-    "phone": "0911330003",
-    "arrivalTime": "",
-    "departureTime": "",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Trần Phú Hùng",
-        "position": "UVBTV Tỉnh uỷ-Bí thư Đảng ủy -CT.HĐND phường"
-      },
-      {
-        "fullName": "Nguyễn Thanh Vũ",
-        "position": "Chủ tịch UBND phường"
-      }
-    ]
-  },
-  {
-    "id": "1782269682566",
-    "createdAt": "2026-06-24T02:54:42.566Z",
-    "organization": "Khác",
-    "phone": "0867382281",
-    "arrivalTime": "2026-06-26",
-    "departureTime": "",
-    "transportation": "Ô tô",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Đỗ Anh Nhật",
-        "position": "Chuyên viên phòng KTHTĐT thuộc UBND phường Tuy Hoà"
-      }
-    ]
-  },
-  {
-    "id": "1782270669169",
-    "createdAt": "2026-06-24T03:11:09.169Z",
-    "organization": "Khác",
-    "phone": "0867584828",
-    "arrivalTime": "2026-06-26",
-    "departureTime": "2026-06-26",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "Không, ở tại địa phương",
-    "delegates": [
-      {
-        "fullName": "Lê Quang Phúc",
-        "position": "Giám Đốc Sapo Chi Nhánh Đắk Lắk"
-      }
-    ]
-  },
-  {
-    "id": "1782272281113",
-    "createdAt": "2026-06-24T03:38:01.113Z",
-    "organization": "UBND xã Ea Ô",
-    "phone": "0946756979",
-    "arrivalTime": "2026-06-25",
-    "departureTime": "2026-06-25",
-    "transportation": "Ô tô",
-    "hotel": "Hoàng Hà ",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Nguyễn Thanh Bình",
-        "position": "Chủ tịch xã"
-      }
-    ]
-  },
-  {
-    "id": "1782273185845",
-    "createdAt": "2026-06-24T03:53:05.845Z",
-    "organization": "Khác",
-    "phone": "0819005958",
-    "arrivalTime": "2026-06-25",
-    "departureTime": "2026-06-26",
-    "transportation": "Máy bay",
-    "hotel": "Lam Trà ",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "HUỲNH LÊ VĨNH PHÁT ",
-        "position": "Phó giám đốc Đại diện Hội Doanh nghiệp vừa và nhỏ Việt - Đức (KV Miền Trung và Tây nguyên)"
-      }
-    ]
-  },
-  {
-    "id": "1782275901778",
-    "createdAt": "2026-06-24T04:38:21.778Z",
-    "organization": "Khác",
-    "phone": "0904333202",
-    "arrivalTime": "2026-06-25",
-    "departureTime": "2026-06-26",
-    "transportation": "Ô tô",
-    "hotel": "Lam Trà",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "HUỲNH KIM NHỰT",
-        "position": "P. Chánh Văn phòng Hội Doanh nghiệp Vừa và Nhỏ Việt - Đức ( KV Miền trung và Tây Nguyên)"
-      }
-    ]
-  },
-  {
-    "id": "1782276364516",
-    "createdAt": "2026-06-24T04:46:04.516Z",
-    "organization": "UBND xã Krông Nô",
-    "phone": "0982888424",
-    "arrivalTime": "",
-    "departureTime": "",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Tạ Công Sơn",
-        "position": "Phó chủ tịch UBND xã"
-      }
-    ]
-  },
-  {
-    "id": "1782285679275",
-    "createdAt": "2026-06-24T07:21:19.275Z",
-    "organization": "Công Ty CPDTQT Phong Phú - Phú Yên",
-    "phone": "0905272080",
-    "arrivalTime": "2026-06-26",
-    "departureTime": "2026-06-26",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Nguyễn Tùng Lâm",
-        "position": "Trưởng phòng HC-NS&TL"
-      }
-    ]
-  },
-  {
-    "id": "1782296608365",
-    "createdAt": "2026-06-24T10:23:28.365Z",
-    "organization": "Sở Công Thương tỉnh Đắk Lắk",
-    "phone": "0915268814",
-    "arrivalTime": "",
-    "departureTime": "",
-    "transportation": "",
-    "hotel": "",
-    "otherRequests": "",
-    "delegates": [
-      {
-        "fullName": "Trần Quốc Toàn",
-        "position": "Phó Giám đốc Sở"
-      }
-    ]
-  },
-  {
-    "id": "1782789756423",
-    "createdAt": "2026-06-30T03:22:36.423Z",
-    "fullName": "Test",
-    "phone": "123"
-  },
-  {
-    "id": "1782789828686",
-    "createdAt": "2026-06-30T03:23:48.686Z",
-    "fullName": "Nguyen Van A",
-    "organization": "Cong ty A",
-    "position": "Nhan vien",
-    "phone": "123456789",
-    "email": "test@example.com"
-  },
-  {
-    "id": "1782790109722",
-    "createdAt": "2026-06-30T03:28:29.722Z",
-    "fullName": "Nguyen Van B",
-    "organization": "Cong ty B",
-    "position": "Nhan vien",
-    "phone": "987654321",
-    "email": "nguyenvanb@example.com"
-  },
-  {
-    "id": "1782790176119",
-    "createdAt": "2026-06-30T03:29:36.119Z",
-    "fullName": "tran trung thanh",
-    "organization": "HĐND tỉnh Đắk Lắk",
-    "position": "chueyn vien",
-    "phone": "0911140055",
-    "email": "trungthanhbmt.tran@gmail.com"
-  },
-  {
-    "id": "1782790190642",
-    "createdAt": "2026-06-30T03:29:50.642Z",
-    "fullName": "Nguyen Van B",
-    "organization": "Cong ty B",
-    "position": "Nhan vien",
-    "phone": "987654321",
-    "email": "nguyenvanb@example.com"
-  },
-  {
     "id": "1782790217630",
     "createdAt": "2026-06-30T03:30:17.630Z",
     "fullName": "Nguyễn Minh Hóa",
     "organization": "Sở Khoa học và Công nghệ tỉnh Đắk Lắk",
     "position": "Chuyên viên - Phòng CĐS",
     "phone": "0905148401",
+    "email": ""
+  },
+  {
+    "id": "1782878357188629",
+    "createdAt": "2026-07-01T03:59:17.188Z",
+    "fullName": "Huỳnh Huy Cận",
+    "organization": "Sở Công Thương tỉnh Đắk Lắk",
+    "position": "Chuyên viên",
+    "phone": "0915268814",
+    "email": ""
+  },
+  {
+    "id": "1782878357189779",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "Võ Anh Thơ",
+    "organization": "Sở Công Thương tỉnh Đắk Lắk",
+    "position": "Phó Chánh Văn phòng",
+    "phone": "0944.474.886",
+    "email": ""
+  },
+  {
+    "id": "1782878357189693",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "Lê Trần Vinh",
+    "organization": "UBND Phường Tân An",
+    "position": "Nhân viên",
+    "phone": "0919678928",
+    "email": ""
+  },
+  {
+    "id": "1782878357189705",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "Tống Ngọc Lâm",
+    "organization": "UBND phường Tân An",
+    "position": "Phó Trưởng phòng VHXH",
+    "phone": "0989434909",
+    "email": ""
+  },
+  {
+    "id": "1782878357189163",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "NGUYỄN ĐÔNG HÀ",
+    "organization": "UBND XÃ ĐỨC BÌNH",
+    "position": "CHUYÊN VIÊN",
+    "phone": "0935180987",
+    "email": ""
+  },
+  {
+    "id": "1782878357189794",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "NGUYỄN THANH HOÀI",
+    "organization": "UBND XÃ ĐỨC BÌNH",
+    "position": "PHÓ CHỦ TỊCH UBND",
+    "phone": "0123456789",
+    "email": ""
+  },
+  {
+    "id": "1782878357189909",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "Nguyễn Thành Đạt",
+    "organization": "UBND xã Phú Mỡ",
+    "position": "Nhân viên P. Văn hóa - Xã hội",
+    "phone": "0986099248",
+    "email": ""
+  },
+  {
+    "id": "1782878357189585",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "Phạm Tấn Thành",
+    "organization": "Phòng Văn hóa-Xã hội xã Ea Wy",
+    "position": "Chuyên viên",
+    "phone": "0919463161",
+    "email": ""
+  },
+  {
+    "id": "1782878357189323",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "Đỗ Công Tuấn",
+    "organization": "UBND xã Ea Ô",
+    "position": "chuyên viên phòng VH-XH",
+    "phone": "0978084567",
+    "email": ""
+  },
+  {
+    "id": "1782878357189231",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "Trần Thanh Tú",
+    "organization": "Sở Xây dựng tỉnh Đắk Lắk",
+    "position": "Chuyên viên Văn phòng",
+    "phone": "0969110118",
+    "email": ""
+  },
+  {
+    "id": "1782878357189487",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "Nguyễn Văn Minh",
+    "organization": "UBND xã Ea Ô",
+    "position": "Phó trưởng phòng VH-XH",
+    "phone": "0944240039",
+    "email": ""
+  },
+  {
+    "id": "1782878357189558",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "Nguyễn Xuân Minh Vũ",
+    "organization": "UBND tỉnh Đắk Lắk",
+    "position": "Nhân viên",
+    "phone": "0946695057",
+    "email": ""
+  },
+  {
+    "id": "1782878357189763",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "Võ Hoàng Nguyên",
+    "organization": "UBND tỉnh Đắk Lắk",
+    "position": "Chuyên viên",
+    "phone": "0962397791",
+    "email": ""
+  },
+  {
+    "id": "1782878357189333",
+    "createdAt": "2026-07-01T03:59:17.189Z",
+    "fullName": "Trần Thị Minh Trang",
+    "organization": "UBND xã Hòa Xuân",
+    "position": "Chuyên viên Phòng Văn hóa - Xã hội xã Hòa Xuân",
+    "phone": "0935012612",
     "email": ""
   }
 ]

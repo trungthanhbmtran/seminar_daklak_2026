@@ -130,12 +130,20 @@ export default function RegisterForm({
         setIsSubmitting(true);
 
         // Validate phone number if it exists in formData
-        const phoneRegex = /^(0|\+84)(3[2-9]|5[2689]|7[06-9]|8[1-9]|9[0-9])[0-9]{7}$/;
+        const phoneRegex = /^0(3[2-9]|5[2689]|7[06-9]|8[1-9]|9[0-9])[0-9]{7}$/;
         const phoneField = fields.find(f => f.type === 'tel' || f.id === 'phone');
-        if (phoneField && formData[phoneField.id] && !phoneRegex.test(formData[phoneField.id])) {
-            alert(`Trường "${phoneField.label}" không hợp lệ. Vui lòng nhập đúng định dạng số điện thoại Việt Nam!`);
-            setIsSubmitting(false);
-            return;
+        if (phoneField) {
+            const phoneVal = formData[phoneField.id]?.trim() || "";
+            if (!phoneVal) {
+                alert(`Trường "${phoneField.label}" không được để trống!`);
+                setIsSubmitting(false);
+                return;
+            }
+            if (!phoneRegex.test(phoneVal)) {
+                alert(`Trường "${phoneField.label}" không hợp lệ. Vui lòng nhập đúng định dạng số điện thoại 10 số!`);
+                setIsSubmitting(false);
+                return;
+            }
         }
 
         try {
