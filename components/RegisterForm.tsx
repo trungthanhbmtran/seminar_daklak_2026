@@ -158,7 +158,8 @@ export default function RegisterForm({
             if (response.ok) {
                 router.push('/documents');
             } else {
-                alert("Có lỗi xảy ra khi đăng ký. Vui lòng thử lại!");
+                const data = await response.json().catch(() => ({}));
+                alert(data.error || "Có lỗi xảy ra khi đăng ký. Vui lòng thử lại!");
             }
         } catch (error) {
             console.error("Error submitting form:", error);
